@@ -86,15 +86,15 @@ this.resize = function(callback) {
 
 			var collapseTarget = collapsers[i].getAttribute("data-target");
 			
-			if (document.width >= 0) {			
+			if (document.width >= 0) {
+					jim(collapseTarget).className = jim(collapseTarget).className.replace(' display', '');
 				}
 				
 			if (document.width >= 480) {
 					jim(collapseTarget).className = jim(collapseTarget).className.replace(' display', '');
 				}
 				
-			if (document.width >= 980) {
-					jim(collapseTarget).className = jim(collapseTarget).className.replace(' display', '');
+			if (document.width >= 980) {				
 				}		
 				
 
