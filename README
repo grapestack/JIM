@@ -1,1 +1,5 @@
-JIM (JIM is minimal) is a minimalistic abstraction framework for JavaScript, with optional jQuery hooks.
+JIM (JIM is minimal) is a minimalistic abstraction framework for JavaScript.
+
+Includes:
+jQuery-style element selection using $("#ID") or $(".class")
+Event handling for responsive elements

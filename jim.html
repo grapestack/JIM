@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+
+<link href="jim.css" rel="stylesheet">
+
+<script type="text/javascript" src="jim.js"></script>
+
+<div class="wrapper">
+
+    <div class="collapser collapse1" data-target="#collapsed1">
+    I start off hidden until below 480
+    </div>
+
+    <div class="collapser collapse2" data-target="#collapsed2">
+    I also start off hidden
+    </div>
+    
+    <div class="collapsable1" id="collapsed1">
+    I start off shown
+    </div>
+	
+    <div class="collapsable2" id="collapsed2">
+    I only show between 480 and 980
+    </div>
+
+	<hr />
+	
+    <div id="info">
+    </div>
+	
+</div>
+
+<script type="text/javascript">
+
+var ref = '$';
+window.onload = initJIM(ref);
+
+//alert($('.collapse','[]'));
+
+$('resize', function(){
+
+	$("#info").innerHTML = '';
+
+	$("#info").innerHTML = $("#info").innerHTML + 'Window Inner Width: '+window.innerWidth+'<br />';
+	$("#info").innerHTML = $("#info").innerHTML + 'Window Inner Height: '+window.innerHeight+'<br />';
+	$("#info").innerHTML = $("#info").innerHTML + 'Window Outer Width: '+window.outerWidth+'<br />';
+	$("#info").innerHTML = $("#info").innerHTML + 'Window outer Height: '+window.outerHeight+'<br />';
+	$("#info").innerHTML = $("#info").innerHTML + 'Document Width: '+document.width+'<br />';
+	$("#info").innerHTML = $("#info").innerHTML + 'Document Height: '+document.height+'<br />';
+
+	console.log('resizer');
+	
+	});
+
+</script>
+
+</body>
+</html>
