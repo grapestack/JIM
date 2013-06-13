@@ -44,7 +44,7 @@
 
 	<hr />
 	
-    <div id="info">The background of .wrapper will change colors at 980px<br />
+    <div id="info">The background of .wrapper will change colors at 980px. Resize the window to see responsiveness.<br />
     </div>
 
 
@@ -55,7 +55,7 @@ window.onload = initJIM('$');
 //This function is called every 25ms as the window is resized, you can include custom functionality here.
 $('resize', function(){
 
-	$("#info").innerHTML = 'The background of .wrapper will change colors at 980px<br />';
+	$("#info").innerHTML = 'The background of .wrapper will change colors at 980px. Resize the window to see responsiveness.<br />';
 
 	$("#info").innerHTML = $("#info").innerHTML + 'Window Inner Width: '+window.innerWidth+'<br />';
 	$("#info").innerHTML = $("#info").innerHTML + 'Window Inner Height: '+window.innerHeight+'<br />';
