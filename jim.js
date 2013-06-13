@@ -1,4 +1,5 @@
 var initJIM = function(ref) {
+	window.refName = ref;
 	window.jim = jim;
 	window[ref] = window.jim;
 	
@@ -283,9 +284,12 @@ this.get = function(obj,objDefinition,rt) {
 		
 			var returnObj = {
 				"obj":document.getElementById(obj),
-				"jim":jim,
-				"$":jim
+				"jim":jim
 				}
+				
+				returnObj[window.refName] = jim;
+				
+				returnObj[window.refName] = jim;
 				
 			return returnObj;			
 		} else {
@@ -312,9 +316,10 @@ this.get = function(obj,objDefinition,rt) {
 			
 			var returnObj = {
 				"obj":obj,
-				"jim":jim,
-				"$":jim
+				"jim":jim
 				}
+				
+				returnObj[window.refName] = jim;
 				
 			return returnObj;
 			
