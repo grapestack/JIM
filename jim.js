@@ -11,13 +11,13 @@ var initJIM = function(ref) {
 								
 			if (jim().hasClass(jim(collapseTarget).className.split(' '),'display')) {
 							
-				var newClasses = jim().removeClass(jim(collapseTarget).className.split(' '),'display');
+				var newClasses = jim().removeClass(jim(collapseTarget).className,'display');
 												
 				jim(collapseTarget).className = newClasses;
 			
 			} else {
 					
-				var newClasses = jim().addClass(jim(collapseTarget).className.split(' '),'display');
+				var newClasses = jim().addClass(jim(collapseTarget).className,'display');
 												
 				jim(collapseTarget).className = newClasses;
 			
@@ -39,13 +39,13 @@ var initJIM = function(ref) {
 							
 							if (jim().hasClass(controlTargets[ii].className.split(' '),'display')) {
 							
-								var newClasses = jim().removeClass(controlTargets[ii].className.split(' '),'display');
+								var newClasses = jim().removeClass(controlTargets[ii].className,'display');
 								
 								controlTargets[ii].className = newClasses;
 							
 							} else {
 								
-								var newClasses = jim().addClass(controlTargets[ii].className.split(' '),'display');
+								var newClasses = jim().addClass(controlTargets[ii].className,'display');
 								
 								controlTargets[ii].className = newClasses;
 								
@@ -166,6 +166,14 @@ this.resize = function(callback) {
 }
 
 this.removeClass = function(classes,targetClass){
+
+	if (typeof(classes) == 'string') {
+		classes = classes.split(" ");
+	} else 	if (typeof(classes) == 'object') {
+		classes = classes.obj.className.split(" ");
+	}
+	
+
 	
 	var tempClasses = [];
 		for (var iii=0;iii<classes.length;iii++) {
@@ -178,27 +186,27 @@ this.removeClass = function(classes,targetClass){
 	
 }
 
-this.addClass = function(classes,targetClass){
-			
+this.addClass = function(classes,targetClass){		
+						
+						console.log(classes);
+						
 	if (typeof(classes) == 'string') {
-		classes.split(" ");
+		classes = classes.split(" ");
+	} else if (typeof(classes) == 'object') {
+		classes = classes.obj.className.split(" ");
 	}
-
-	if (typeof(classes) == 'object') {
-		classes.obj.className.split(" ");
-	}
-				
+														
 	var tempClasses = [];
 	var classExsists = true;
 		for (var iii=0;iii<classes.length;iii++) {
 			tempClasses.push(classes[iii]);
 			if (classes[iii] == targetClass) {
 				classExsists = false;
-			}
+			}			
 		}
 		
 	if (classExsists == true) {
-		tempClasses.push('display');
+		tempClasses.push(targetClass);
 	}
 				
 	return tempClasses.join(" ");
