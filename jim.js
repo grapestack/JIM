@@ -9,7 +9,7 @@ var initJIM = function(ref) {
 		
 		var collapseTarget = this.getAttribute("data-target");			
 								
-			if (jim().hasClass(jim(collapseTarget).className.split(' '),'display')) {
+			if (jim().hasClass(jim(collapseTarget).className,'display')) {
 							
 				var newClasses = jim().removeClass(jim(collapseTarget).className,'display');
 												
@@ -37,7 +37,7 @@ var initJIM = function(ref) {
 	
 						for (var ii=0;ii<controlTargets.length;ii++) {
 							
-							if (jim().hasClass(controlTargets[ii].className.split(' '),'display')) {
+							if (jim().hasClass(controlTargets[ii].className,'display')) {
 							
 								var newClasses = jim().removeClass(controlTargets[ii].className,'display');
 								
@@ -123,12 +123,12 @@ this.resize = function(callback) {
 			
 			if (document.width >= 0) {
 				
-					jim().removeClass(jim(collapseTarget).className.split(' '),'display');
+					jim().removeClass(jim(collapseTarget).className,'display');
 
 				}
 				
 			if (document.width >= 480) {
-					jim().removeClass(jim(collapseTarget).className.split(' '),'display');
+					jim().removeClass(jim(collapseTarget).className,'display');
 				}
 				
 			if (document.width >= 980) {				
@@ -145,14 +145,14 @@ this.resize = function(callback) {
 			var collapseTarget = collapsers[i].getAttribute("data-target");
 			
 			if (document.width >= 0) {
-					jim().removeClass(jim(collapseTarget).className.split(' '),'display');	
+					jim().removeClass(jim(collapseTarget).className,'display');	
 				}
 				
 			if (document.width >= 480) {								
 				}
 				
 			if (document.width >= 980) {
-					jim().removeClass(jim(collapseTarget).className.split(' '),'display');
+					jim().removeClass(jim(collapseTarget).className,'display');
 				}		
 				
 
@@ -214,13 +214,13 @@ this.addClass = function(classes,targetClass){
 }
 
 this.hasClass = function(classes,compareClass){
-	
+
 	if (typeof(classes) == 'string') {
 		classes = classes.split(" ");
 	} else if (typeof(classes) == 'object') {
 		classes = classes.obj.className.split(" ");
 	}
-	
+
 	var existingClass = false;
 	
 		for (var iii=0;iii<classes.length;iii++) {
