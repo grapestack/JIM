@@ -215,6 +215,12 @@ this.addClass = function(classes,targetClass){
 
 this.hasClass = function(classes,compareClass){
 	
+	if (typeof(classes) == 'string') {
+		classes = classes.split(" ");
+	} else if (typeof(classes) == 'object') {
+		classes = classes.obj.className.split(" ");
+	}
+	
 	var existingClass = false;
 	
 		for (var iii=0;iii<classes.length;iii++) {
