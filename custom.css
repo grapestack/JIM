@@ -1,0 +1,25 @@
+/* custom overrides for 0-479, 480-979, 980+ */
+
+@media (min-width: 0px) and (max-width: 479px) {
+	
+  .wrapper {
+    background-color: #C9D8ED !important;
+  }
+	
+}
+
+@media (min-width: 980px) {
+	
+  .wrapper {
+    background-color: #72CAE7 !important;
+  }
+		
+}
+
+.wrapper {
+	background-color: #9CF;
+}
+
+div {
+padding: 10px;
+}

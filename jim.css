@@ -54,16 +54,6 @@ a:hover,
 a:active {
   outline: 0;
 }
-/*
-
-HTML5 CSS Reset
-Based on Eric Meyer's CSS Reset
-and html5doctor.com HTML5 Reset
-
-Copyright (c) 2011 736 Computing Services Limited
-Released under the MIT license. http://opensource.736cs.com/licenses/mit
-
-*/
 
 article, aside, dialog, figure, footer, header, 
 hgroup, nav, section, blockquote { 
@@ -136,6 +126,10 @@ input[type="submit"], input[type="button"], button {
 
 input, select, a img {
 	vertical-align: middle;
+}
+
+.control {
+	display: none;
 }
 
 @media (min-width: 0px) {
@@ -319,18 +313,4 @@ input, select, a img {
 	background-repeat: repeat-x;
 	border-color: #ccc #ccc;
 
-}
-
-.wrapper {
-	background-color: #9CF;
-}
-
-// 0-479, 480-979, 980+ 
-
-.control {
-	display: none;
-}
-
-div {
-padding: 10px;
 }
