@@ -8,19 +8,54 @@ var initJIM = function(ref) {
 		collapsers[i].onclick = function(){ 
 		
 		var collapseTarget = this.getAttribute("data-target");			
-		
-			if (jim(collapseTarget).className.indexOf(' display') != -1) {
+								
+			if (jim().hasClass(jim(collapseTarget).className.split(' '),'display')) {
 							
-				jim(collapseTarget).className = jim(collapseTarget).className.replace(' display', '');
+				var newClasses = jim().removeClass(jim(collapseTarget).className.split(' '),'display');
+												
+				jim(collapseTarget).className = newClasses;
 			
 			} else {
 					
-				jim(collapseTarget).className = jim(collapseTarget).className + ' display';
+				var newClasses = jim().addClass(jim(collapseTarget).className.split(' '),'display');
+												
+				jim(collapseTarget).className = newClasses;
 			
 			}
 					
 		};
 	}		
+	
+	var controls = jim('.control','[]');
+	
+	for (var i=0;i<controls.length;i++) {			
+		controls[i].onclick = function(){ 
+		
+		var controlTarget = this.getAttribute("data-control");			
+											
+					var controlTargets = jim('.'+controlTarget,'[]');
+	
+						for (var ii=0;ii<controlTargets.length;ii++) {
+							
+							if (jim().hasClass(controlTargets[ii].className.split(' '),'display')) {
+							
+								var newClasses = jim().removeClass(controlTargets[ii].className.split(' '),'display');
+								
+								controlTargets[ii].className = newClasses;
+							
+							} else {
+								
+								var newClasses = jim().addClass(controlTargets[ii].className.split(' '),'display');
+								
+								controlTargets[ii].className = newClasses;
+								
+							}
+						
+						}
+					
+		};
+	}		
+	
 }
 
 function jim(obj,rt) {
@@ -87,11 +122,13 @@ this.resize = function(callback) {
 			var collapseTarget = collapsers[i].getAttribute("data-target");
 			
 			if (document.width >= 0) {
-					jim(collapseTarget).className = jim(collapseTarget).className.replace(' display', '');
+				
+					jim().removeClass(jim(collapseTarget).className.split(' '),'display');
+
 				}
 				
 			if (document.width >= 480) {
-					jim(collapseTarget).className = jim(collapseTarget).className.replace(' display', '');
+					jim().removeClass(jim(collapseTarget).className.split(' '),'display');
 				}
 				
 			if (document.width >= 980) {				
@@ -108,14 +145,14 @@ this.resize = function(callback) {
 			var collapseTarget = collapsers[i].getAttribute("data-target");
 			
 			if (document.width >= 0) {
-					jim(collapseTarget).className = jim(collapseTarget).className.replace(' display', '');			
+					jim().removeClass(jim(collapseTarget).className.split(' '),'display');	
 				}
 				
 			if (document.width >= 480) {								
 				}
 				
 			if (document.width >= 980) {
-					jim(collapseTarget).className = jim(collapseTarget).className.replace(' display', '');
+					jim().removeClass(jim(collapseTarget).className.split(' '),'display');
 				}		
 				
 
@@ -128,11 +165,78 @@ this.resize = function(callback) {
 	
 }
 
+this.removeClass = function(classes,targetClass){
+	
+	var tempClasses = [];
+		for (var iii=0;iii<classes.length;iii++) {
+			if (classes[iii] != targetClass) {
+				tempClasses.push(classes[iii]);
+			}
+		}
+		
+	return  tempClasses.join(" ");
+	
+}
+
+this.addClass = function(classes,targetClass){
+			
+	if (typeof(classes) == 'string') {
+		classes.split(" ");
+	}
+
+	if (typeof(classes) == 'object') {
+		classes.obj.className.split(" ");
+	}
+				
+	var tempClasses = [];
+	var classExsists = true;
+		for (var iii=0;iii<classes.length;iii++) {
+			tempClasses.push(classes[iii]);
+			if (classes[iii] == targetClass) {
+				classExsists = false;
+			}
+		}
+		
+	if (classExsists == true) {
+		tempClasses.push('display');
+	}
+				
+	return tempClasses.join(" ");
+	
+}
+
+this.hasClass = function(classes,compareClass){
+	
+	var existingClass = false;
+	
+		for (var iii=0;iii<classes.length;iii++) {
+			if (classes[iii] == compareClass) {
+				existingClass = true;
+			}
+		}
+		
+	return existingClass;
+	
+}
+
 this.get = function(obj,objDefinition,rt) {
 
 	if (objDefinition == '#') {
+
+		if (rt == 'obj') {
 		
-	return document.getElementById(obj);
+			var returnObj = {
+				"obj":document.getElementById(obj),
+				"jim":jim,
+				"$":jim
+				}
+				
+			return returnObj;			
+		} else {
+			
+			return document.getElementById(obj);
+			
+		}
 		
 	} else if (objDefinition == '.') {
 	
@@ -142,12 +246,23 @@ this.get = function(obj,objDefinition,rt) {
 	for (var i = 0, ref = arr.length = nl.length; i < ref; i++) {
 	 arr[i] = nl[i];
 	}
-	
-	if (rt == '[]') {
-		return arr;
-	} else if (rt == '{}') {
-		return nl;
-	}	
+
+		
+		if (rt == '[]') {
+			return arr;
+		} else if (rt == '{}') {
+			return nl;
+		} else if (rt == 'obj') {
+			
+			var returnObj = {
+				"obj":obj,
+				"jim":jim,
+				"$":jim
+				}
+				
+			return returnObj;
+			
+		}				
 		
 	} else {
 		return false;

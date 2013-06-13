@@ -6,47 +6,56 @@
 
 <script type="text/javascript" src="jim.js"></script>
 
-<a class="button">I Am A Button</a>
-
 <div class="wrapper">
 
 	<hr />
 
     <div class="collapser collapse1" data-target="#collapsed1">
-    I start off hidden until below 980
+    <a class="button">I am button 1 shown:&gt;980 click:#collapsed1</a>
     </div>
 
     <div class="collapser collapse2" data-target="#collapsed2">
-    I also start off hidden until below 480
+    <a class="button">I am button 2 shown:&lt;480 click:#collapsed2</a>
     </div>
     
     <div class="collapsable1" id="collapsed1">
-    I start off shown
+    I am #collapsed1 shown:&gt;980 control:button 1
     </div>
 	
     <div class="collapsable2" id="collapsed2">
-    I only show between 480 and 980
+    I am #collapsed2 shown:&gt;480 & &lt;980 control:button 2
     </div>
 
 	<hr />
-	
-    <div id="info">
+    
+    <div class="control" data-control="control1">
+    <a href="#" class="button">I am a responsive control div with class .button<br />shown only between below 480 or above 979</a>
     </div>
-	
+    
+    <div class="responsive control1">
+    I am a responsive div, shown only between 480 and 979 or unless the responsive control is clicked. I am in control group 1, the same as the other div.
+    </div>
+    
+    <div class="responsive control1">
+    I am a responsive div, shown only between 480 and 979 or unless the responsive control is clicked. I am in control group 1, the same as the other div.
+    </div>
+
 </div>
+
+	<hr />
+	
+    <div id="info">The background of .wrapper will change colors at 980px<br />
+    </div>
+
 
 <script type="text/javascript">
 
 window.onload = initJIM('$');
 
-/*
-Example of an alert using an array of '.collapse' objects
-alert($('.collapse','[]'));
-*/
-
+//This function is called every 25ms as the window is resized, you can include custom functionality here.
 $('resize', function(){
 
-	$("#info").innerHTML = '';
+	$("#info").innerHTML = 'The background of .wrapper will change colors at 980px<br />';
 
 	$("#info").innerHTML = $("#info").innerHTML + 'Window Inner Width: '+window.innerWidth+'<br />';
 	$("#info").innerHTML = $("#info").innerHTML + 'Window Inner Height: '+window.innerHeight+'<br />';
@@ -59,6 +68,23 @@ $('resize', function(){
 	
 	});
 
+	/* examples of various selectors and accessors
+	
+	alert($("#info").style.display);
+	
+	alert($("#info",'obj').obj.style.display);
+	
+	var newClasses = $().addClass($("#info",'obj'),'display');
+	$("#info").className = newClasses;
+	alert($("#info").className);
+	
+	*/
+	
+	/* get and alert an array of objects with class .control1
+	alert($('.control1','[]'));
+	*/
+
+	
 </script>
 
 </body>
