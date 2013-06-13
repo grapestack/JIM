@@ -226,10 +226,6 @@ textarea {
 
 @media (min-width: 980px) {
 	
-  .wrapper {
-    background-color: #C9D8ED !important;
-  }
-
 	.collapse {
 		display: none;
 	}	  
@@ -257,6 +253,10 @@ textarea {
 }
 
 @media (min-width: 0px) and (max-width: 479px) {
+	
+  .wrapper {
+    background-color: #C9D8ED !important;
+  }
 	
 	.responsive {
 		display: none;
