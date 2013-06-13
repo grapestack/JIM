@@ -112,8 +112,21 @@ this.getAbout = function() {
 this.resize = function(callback) {
 
 	var res;
-	window.onresize=function() {
+	
+	window.onresize=function() {			
+			
 		if (res){ clearTimeout(res) };
+	
+	var controls = jim('.responsive', '[]');
+	
+	for (var i=0;i<controls.length;i++) {													
+								
+		var newClasses = jim().removeClass(controls[i].className,'display');
+
+		controls[i].className = newClasses;
+
+	}	
+	
 			
 	var collapsers = jim('.collapse1','[]');
 
