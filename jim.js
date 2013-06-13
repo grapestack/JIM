@@ -136,12 +136,12 @@ this.resize = function(callback) {
 			
 			if (document.width >= 0) {
 				
-					jim().removeClass(jim(collapseTarget).className,'display');
+					jim(collapseTarget).className = jim().removeClass(jim(collapseTarget).className,'display');
 
 				}
 				
 			if (document.width >= 480) {
-					jim().removeClass(jim(collapseTarget).className,'display');
+					jim(collapseTarget).className = jim().removeClass(jim(collapseTarget).className,'display');
 				}
 				
 			if (document.width >= 980) {				
@@ -158,14 +158,14 @@ this.resize = function(callback) {
 			var collapseTarget = collapsers[i].getAttribute("data-target");
 			
 			if (document.width >= 0) {
-					jim().removeClass(jim(collapseTarget).className,'display');	
+					jim(collapseTarget).className = jim().removeClass(jim(collapseTarget).className,'display');	
 				}
 				
 			if (document.width >= 480) {								
 				}
 				
 			if (document.width >= 980) {
-					jim().removeClass(jim(collapseTarget).className,'display');
+					jim(collapseTarget).className = jim().removeClass(jim(collapseTarget).className,'display');
 				}		
 				
 
