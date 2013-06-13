@@ -2,6 +2,8 @@ var initJIM = function(ref) {
 	window.jim = jim;
 	window[ref] = window.jim;
 	
+//	window.addEventListener('onorientationchange', jim().doOnOrientationChange);
+	
 	var collapsers = jim('.collapser','[]');
 	
 	for (var i=0;i<collapsers.length;i++) {			
@@ -54,7 +56,9 @@ var initJIM = function(ref) {
 						}
 					
 		};
-	}		
+	}			
+	
+	jim().resizeHandler();
 	
 }
 
@@ -63,6 +67,7 @@ function jim(obj,rt) {
 	if (rt) {
 		var grt = rt;
 	} else {
+		
 		var grt = '{}';
 	}
 
@@ -113,21 +118,38 @@ this.resize = function(callback) {
 	
 	var res;
 	
-	window.onresize = function(res) {	
+	window.onresize = function() {	
 		
 		if (res){ clearTimeout(res) };
 		
-		resizeHandler(callback);
+		console.log('resize');
 		
-		res = setTimeout(callback,25);
+		res = setTimeout(
+		function(){
+			jim().resizeHandler();
+			callback();
+			}
+		,25);
 		
 		}
 }
 
-this.resizeHandler = function(callback) {			
-		
+this.doOnOrientationChange = function()
+  {
+    switch(window.orientation) 
+    {  
+      case -90:
+      case 90:
+        jim().resizeHandler();
+        break; 
+      default:
+        jim().resizeHandler();
+        break; 
+    }
+  }
 
-				
+this.resizeHandler = function() {			
+
 	var controls = jim('.responsive', '[]');
 	
 	for (var i=0;i<controls.length;i++) {													
