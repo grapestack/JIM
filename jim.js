@@ -110,13 +110,24 @@ this.getAbout = function() {
 }
 
 this.resize = function(callback) {
-
+	
 	var res;
 	
-	window.onresize=function() {			
-			
+	window.onresize = function(res) {	
+		
 		if (res){ clearTimeout(res) };
-	
+		
+		resizeHandler(callback);
+		
+		res = setTimeout(callback,25);
+		
+		}
+}
+
+this.resizeHandler = function(callback) {			
+		
+
+				
 	var controls = jim('.responsive', '[]');
 	
 	for (var i=0;i<controls.length;i++) {													
@@ -171,12 +182,8 @@ this.resize = function(callback) {
 
 					
 		};
-		
-		res = setTimeout(callback,25);
-		
-	}			
-	
-}
+			
+	};
 
 this.removeClass = function(classes,targetClass){
 
