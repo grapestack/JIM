@@ -282,6 +282,10 @@ textarea {
 
 @media (min-width: 980px) {
 	
+  .wrapper {
+    background-color: #72CAE7 !important;
+  }
+	
 	.responsive {
 		display: none;
 	}
